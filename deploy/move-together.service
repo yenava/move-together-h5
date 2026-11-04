@@ -1,0 +1,23 @@
+[Unit]
+Description=Conference Sports PK H5
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sports-pk
+Group=sports-pk
+WorkingDirectory=/opt/move-together/app
+EnvironmentFile=/opt/move-together/production.env
+ExecStart=/opt/move-together/runtime/node server/index.js
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/move-together
+
+[Install]
+WantedBy=multi-user.target
